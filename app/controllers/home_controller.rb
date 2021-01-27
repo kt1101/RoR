@@ -1,4 +1,4 @@
-class HomeController < ActionController::Base
+class HomeController < ApplicationController
 
     def index
         @movies = Movie.all
@@ -8,4 +8,13 @@ class HomeController < ActionController::Base
         @movies = Movie.create!(title:params[:title])
         redirect_to root_path
     end
+
+    def destroy
+        @movie = Movie.find(params[:id])
+        puts @movie
+        @movie.destroy
+
+        redirect_to root_path
+    end
 end
+
